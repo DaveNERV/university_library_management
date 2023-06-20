@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Your Reservations</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: userNavBar"></ul>
+	<div class="container">
+
+		<h3>Rezervații</h3>
+		
+		<p th:if="${orders.size() == 0}">Rezervații nu au fost găsite</p>
+		
+		<table th:if="${orders.size() > 0}" id="tablestyle" class="orderTable">
+			<tr>
+				<th width="10%">Numărul comenzii</th>
+				<th>Data comenzii</th>
+				<th>Status</th>
+				<th>Responsabil</th>
+				<th>Costul total</th>
+			</tr>
+			<tr th:each="order : ${orders}">
+				<td th:text="${order.orderId}"></td>
+				<td th:text="${order.orderDate}"></td>
+				<td th:text="${order.status}"></td>
+				<td th:text="${order.responsible}"></td>
+				<td th:text="${order.price}" lei></td>
+			</tr>
+		</table>
+		
+	</div>
+
+	<div class="container booksInOrder" style="display: none; overflow-x: auto; max-width: 100%;">
+
+		<h3>Informații despre cărți comandate</h3>
+		<h3 class="reader"></h3>
+
+		<table id="tablestyle" class="tableBook" style="min-width: 1500px;">
+			<tr>
+				<th>ID</th>
+				<th>Titlu</th>
+				<th>Autor</th>
+				<th>Genuri</th>
+				<th>Anul publicării</th>
+				<th>Ediția</th>
+				<th>Locul publicării</th>
+				<th>ISBN</th>
+				<th>Numărul</th>
+				<th>Pret</th>
+			</tr>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/JS/user-order.js" type="text/javascript"></script>
+	<script src="/JS/reader-dashboard.js" type="text/javascript"></script>
+</body>
+</html>

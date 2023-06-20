@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Informație despre cititor</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>	
+		<div class="container">
+			<h3>Informație despre cititor</h3>
+
+			<div class="row">
+				<div class="col-50">Numărul biletului:</div>
+				<div class="col-75">
+					<text th:text="${user.ticket}"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Email:</div>
+				<div class="col-75">
+					<text th:text="${user.email}">
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-50">Prenumele:</div>
+				<div class="col-75">
+					<text th:text="${user.firstName}"/>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-50">Numele:</div>
+				<div class="col-75">
+					<text th:text="${user.lastName}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Patronimic:</div>
+				<div class="col-75">
+					<text th:text="${user.surName}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Grupa:</div>
+				<div class="col-75">
+					<text th:text="${user.group}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Perioada de studii:</div>
+				<div class="col-75">
+					<text th:text="${user.studyPeriod}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Numărul de telefon:</div>
+				<div class="col-75">
+					<text th:text="${user.phone}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Strada:</div>
+				<div class="col-75">
+					<text th:text="${user.street}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Casa:</div>
+				<div class="col-75">
+					<text th:text="${user.house}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Oraș:</div>
+				<div class="col-75">
+					<text th:text="${user.city}">
+				</div>
+			</div>
+			<br>
+
+			<div class="row">
+				<div class="col-50">Starea contului:</div>
+				<div class="col-75">
+					<text th:text="${user.status == 'ACTIVE' ? 'activ' : 'dezactivat'}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">Creat:</div>
+				<div class="col-75">
+					<text th:text="${user.created}">
+				</div>
+			</div>
+		</div>
+		<div class="container" style="overflow-x: auto; max-width: 100%;">
+			<h4>Cărți emise</h4>
+			<div th:if="${bookList.size() == 0}">Nu sunt cărți emise.</div>
+
+			<table id="tablestyle" th:if="${bookList != null && bookList.size() > 0}" style="min-width: 1700px;">
+				<tr>
+					<th>ID</th>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>Genuri</th>
+					<th>Anul publicării</th>
+					<th>Ediția</th>
+					<th>Locul publicării</th>
+					<th>ISBN</th>
+					<th>UDK</th>
+					<th>BBK</th>
+					<th>Cantitatea</th>
+					<th>Data oferirii</th>
+					<th>Termenul</th>
+					<th>Zile la îndemână</th>
+				</tr>
+				<tr th:each="bookInfo : ${bookList}">
+					<td th:text="${bookInfo.bookDTO.bookId}"></td>
+					<td th:text="${bookInfo.bookDTO.bookName}"></td>
+					<td th:text="${bookInfo.bookDTO.authorsList}"></td>
+					<td th:text="${bookInfo.bookDTO.genreList}"></td>
+					<td th:text="${bookInfo.bookDTO.publishYear}"></td>
+					<td th:text="${bookInfo.bookDTO.publish}"></td>
+					<td th:text="${bookInfo.bookDTO.publishPlace}"></td>
+					<td th:text="${bookInfo.bookDTO.ISBN}"></td>
+					<td th:text="${bookInfo.bookDTO.UDK}"></td>
+					<td th:text="${bookInfo.bookDTO.BBK}"></td>
+					<td th:text="'X' + ${bookInfo.nr}"></td>
+					<td th:text="${bookInfo.offerDate}"></td>
+					<td th:text="${bookInfo.deadLine}"></td>
+					<td th:text="${bookInfo.daysOffered}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="container" style="overflow-x: auto; max-width: 100%;">
+			<h4>Cărți rezervate</h4>
+			<div th:if="${reservedBooks.size() == 0}">Nu sunt cărți rezervate.</div>
+
+			<table id="tablestyle" th:if="${reservedBooks.size() > 0}" style="min-width: 1500px;">
+				<tr>
+					<th>ID</th>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>Genuri</th>
+					<th>Anul publicării</th>
+					<th>Ediția</th>
+					<th>Locul publicării</th>
+					<th>ISBN</th>
+					<th>UDK</th>
+					<th>BBK</th>
+					<th>Cantitatea</th>
+					<th>Rezervarea</th>
+				</tr>
+				<tr th:each="book : ${reservedBooks}">
+					<td th:text="${book.bookDTO.bookId}"></td>
+					<td th:text="${book.bookDTO.bookName}"></td>
+					<td th:text="${book.bookDTO.authorsList}"></td>
+					<td th:text="${book.bookDTO.genreList}"></td>
+					<td th:text="${book.bookDTO.publishYear}"></td>
+					<td th:text="${book.bookDTO.publish}"></td>
+					<td th:text="${book.bookDTO.publishPlace}"></td>
+					<td th:text="${book.bookDTO.ISBN}"></td>
+					<td th:text="${book.bookDTO.UDK}"></td>
+					<td th:text="${book.bookDTO.BBK}"></td>
+					<td th:text="'X' + ${book.nr}"></td>
+					<td th:text="${book.orderWithDate}"></td>
+				</tr>
+			</table>
+		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/JS/employee-dashboard.js" type="text/javascript"></script>
+</body>
+</html>

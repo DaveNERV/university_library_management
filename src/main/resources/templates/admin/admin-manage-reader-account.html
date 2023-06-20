@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Formularul cititorului</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	
+	<div class="container">
+	
+	<h2>Datele cititorului</h2>
+
+		<form th:action="@{/admin/confirmreaderaccountsettings}" th:object="${updateReader}" th:method="POST">
+
+			<p><b>Detalii de contact</b></p>
+			<div class="row">
+				<div class="col-50">
+					<label for="ticket">Numărul biletului<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="ticket" name="ticket" required="required" th:value="${updateReader.ticket}" th:field="${reader.ticket}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="firstName">Prenumele<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="firstName" name="firstName" required="required" th:value="${updateReader.firstName}" th:field="${reader.firstName}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="lastName">Numele<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="lastName" name="lastName" required="required" th:value="${updateReader.lastName}" th:field="${reader.lastName}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="surName">Patronimic<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="surName" name="surName" required="required" th:value="${updateReader.surName}" th:field="${reader.surName}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="group">Grupa</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="group" name="group" th:value="${updateReader.group}" th:field="${reader.group}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="studyPeriod">Perioada de studii<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="studyPeriod" name="studyPeriod" required="required" th:value="${updateReader.studyPeriod}" th:field="${reader.studyPeriod}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="phone">Telefon</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="phone" name="phone" th:value="${updateReader.phone}" th:field="${reader.phone}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-50">
+					<label for="street">Strada<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="street" name="street" required="required" th:value="${updateReader.street}" th:field="${reader.street}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-50">
+					<label for="city">Oraș<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="city" name="city" required="required" th:value="${updateReader.city}" th:field="${reader.city}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-50">
+					<label for="house">Casa<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="house" name="house" required="required" th:value="${updateReader.house}" th:field="${reader.house}">
+				</div>
+			</div>
+
+			<br>
+			<p><b>Detalii de cont</b></p>
+			<div class="row">
+				<div class="col-50">
+					<label for="email">Email<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="email" name="email" required="required" th:value="${updateReader.email}" th:field="${reader.email}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="password">Parola nouă</label>
+				</div>
+				<div class="col-75">
+					<input type="password" id="password" name="password">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label>Creat:</label>
+				</div>
+				<div class="col-75">
+					<p th:text="${reader.created}"></p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<text>Starea contului:</text>
+				</div>
+
+				<div class="col-50">
+					<input type="radio" id="status" name="status" value="ACTIVE" th:checked="${reader.status == 'ACTIVE'}">
+					<text for="status">Cont activ</text>
+				</div>
+
+				<div class="col-50">
+					<input type="radio" id="status" name="status" value="NON_ACTIVE" th:checked="${reader.status == 'NON_ACTIVE'}">
+					<text for="status">Cont dezactivat</text>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="col-50">
+					<text>Rolul:</text>
+				</div>
+
+				<div class="col-50">
+					<input type="radio" id="role" name="role" value="ROLE_USER" th:checked="${reader.role.equals('ROLE_USER')}">
+					<text for="role">Cititor</text>
+				</div>
+
+				<div class="col-50">
+					<input type="radio" id="role" name="role" value="ROLE_EMPLOYEE" th:checked="${reader.role.equals('ROLE_EMPLOYEE')}">
+					<text for="role">Bibliotecar</text>
+				</div>
+
+				<div class="col-50">
+					<input type="radio" id="role" name="role" value="ROLE_ADMIN" th:checked="${reader.role.equals('ROLE_ADMIN')}">
+					<text for="role">Administrator</text>
+				</div>
+			
+			</div>
+		
+		
+		<br/>
+	
+		<div class="row">
+			<div class="col-50">
+					<input type="submit" value="Salvează">
+					<input type="hidden" th:field="${reader.readerId}" name="readerId">
+					<input type="hidden" name="_method" value="PUT">
+				</form>
+			</div>
+			
+			<div class="col-50">
+				<form th:action="@{/admin/manage-reader-accounts}" th:method="GET">
+					<input type="submit" value="Anulează" style="background-color: red">
+				</form>
+			</div>
+		</div>
+	
+	</div>
+	
+</body>
+</html>

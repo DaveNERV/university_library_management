@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Your Books</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: userNavBar"></ul>
+	
+		<div class="container">
+			<h3>Cărțile voastre</h3>
+			
+			<p th:if="${offeredBooks.size() == 0}">Nu aveți cărți la îndemână</p>
+			
+			<table th:if="${offeredBooks.size > 0}" id="tablestyle">
+				<tr>
+					<th>ID</th>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>Ediția</th>
+					<th>Anul publicării</th>
+					<th>Numărul de exemplare</th>
+					<th>Data oferirii</th>
+					<th>Termenul</th>
+					<th>Zile la indemana</th>
+					<th width="10%">Comanda cititorului</th>
+				</tr>
+				<tr th:each="book : ${offeredBooks}">
+					<td th:text="${book.bookId}"></td>
+					<td th:text="${book.bookName}"></td>
+					<td th:text="${book.authorsList}"></td>
+					<td th:text="${book.publish}"></td>
+					<td th:text="${book.publishYear}"></td>
+					<td th:text="${book.nrExemplary}"></td>
+					<td th:text="${book.offerDate}"></td>
+					<td th:text="${book.deadLine}"></td>
+					<td th:text="${book.daysOffered}"></td>
+					<td th:text="${book.orderWithDate}"></td>
+				</tr>
+			</table>
+		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/JS/reader-dashboard.js" type="text/javascript"></script>
+</body>
+</html>

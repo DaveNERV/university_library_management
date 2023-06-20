@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularul angajatului</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Datele angajatului</h2>
+
+    <form th:action="@{/admin/confirmemployeeaccountsettings}" th:object="${updateEmployee}" th:method="POST">
+
+        <p><b>Detalii de contact</b></p>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="firstName">Prenumele<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="firstName" name="firstName" th:value="${updateEmployee.firstName}" th:field="${employee.firstName}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="lastName">Numele<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="lastName" name="lastName" th:value="${updateEmployee.lastName}" th:field="${employee.lastName}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="surName">Patronimic<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="surName" name="surName" th:value="${updateEmployee.surName}" th:field="${employee.surName}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="IDNP">IDNP</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="IDNP" name="IDNP" th:value="${updateEmployee.IDNP}" th:field="${employee.IDNP}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="jobTitle">Funcția</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="jobTitle" name="jobTitle" th:value="${updateEmployee.jobTitle}" th:field="${employee.jobTitle}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="phone">Telefon</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="phone" name="phone" th:value="${updateEmployee.phone}" th:field="${employee.phone}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label for="street">Strada<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="street" name="street" required="required" th:value="${updateEmployee.street}" th:field="${employee.street}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label for="city">Oraș<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="city" name="city" required="required" th:value="${updateEmployee.city}" th:field="${employee.city}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label for="house">Casa<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="house" name="house" required="required" th:value="${updateEmployee.house}" th:field="${employee.house}">
+            </div>
+        </div>
+
+        <p><b>Detalii de cont</b></p>
+        <div class="row">
+            <div class="col-50">
+                <label for="email">Email<span class="required">*</span></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="email" name="email" th:value="${updateEmployee.email}" th:field="${employee.email}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label for="password">Parola nouă</label>
+            </div>
+            <div class="col-75">
+                <input type="password" id="password" name="password">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Creat:</label>
+            </div>
+            <div class="col-75">
+                <p th:text="${employee.created}"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <text>Starea contului:</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="status" name="status" value="ACTIVE" th:checked="${employee.status == 'ACTIVE'}">
+                <text for="status">Cont activ</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="status" name="status" value="NON_ACTIVE" th:checked="${employee.status == 'NON_ACTIVE'}">
+                <text for="status">Cont dezactivat</text>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <text>Rolul:</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_USER" th:checked="${employee.role.equals('ROLE_USER')}">
+                <text for="role">Cititor</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_LIBRARIAN" th:checked="${employee.role.equals('ROLE_LIBRARIAN')}">
+                <text for="role">Bibliotecar</text>
+            </div>
+
+            <div class="col-50">
+                <input type="radio" id="role" name="role" value="ROLE_ADMIN" th:checked="${employee.role.equals('ROLE_ADMIN')}">
+                <text for="role">Administrator</text>
+            </div>
+
+        </div>
+
+
+        <br/>
+
+        <div class="row">
+            <div class="col-50">
+                <input type="submit" value="Salvează">
+                <input type="hidden" th:field="${employee.employeeId}" name="employeeId">
+                <input type="hidden" name="_method" value="PUT">
+    </form>
+</div>
+
+<div class="col-50">
+    <form th:action="@{/admin/manage-employee-accounts}" th:method="GET">
+        <input type="submit" value="Anulează" style="background-color: red">
+    </form>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

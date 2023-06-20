@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:fragment="modalContent">
+  <div id="genresListModal" class="genresListModal">
+    <div class="modal-content">
+      <span class="close closeGenre">x</span>
+      <h2>Genuri</h2>
+      <div class="table-genre-container">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Denumirea genului</th>
+            <th width="48%">Acțiuni</th>
+          </tr>
+        </table>
+      </div>
+      <button class="styled-button" id="addGenreButton">Adăugarea genului</button>
+    </div>
+  </div>
+  <div id="addGenreModal" class="modal">
+    <div class="modal-content" style="height: 200px">
+      <span class="close closeGenre">x</span>
+      <h2>Adaugă un gen nou</h2>
+      <form id="addGenreForm">
+        <label for="newGenreName">Denumirea genului:</label><br>
+        <input type="text" id="newGenreName" name="newGenreName"><br>
+        <input type="submit" id="addGenreSubmit" value="Adaugă">
+      </form>
+    </div>
+  </div>
+  <div id="editGenreModal" class="modal">
+    <div class="modal-content" style="height: 200px">
+      <span class="close closeGenre">x</span>
+      <h2>Editați un gen</h2>
+      <form id="editGenreForm">
+        <input type="hidden" id="editGenreId" name="editGenreId">
+        <label for="editGenreName">Denumirea genului:</label><br>
+        <input type="text" id="editGenreName" name="editGenreName"><br>
+        <input type="submit" id="editGenreSubmit" value="Salvează">
+      </form>
+    </div>
+  </div>
+  <div id="deleteGenreModal" class="modal">
+    <div class="modal-content" style="height: 150px">
+      <span class="close closeGenre">x</span>
+      <h2>Ștergeți genul</h2>
+      <p id="deleteGenreText">Doriți să ștergeți genul: </p>
+      <button type="button" class="styled-button" id="confirmDeleteGenreButton" style="background: red">Șterge</button>
+      <button type="button" class="styled-button" style="margin-left: 20px; background: darkcyan" id="cancelDeleteGenreButton">Anulare</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

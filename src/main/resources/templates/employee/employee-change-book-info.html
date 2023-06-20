@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Change book info</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	<div th:replace="employee/author-modal :: modalContent"></div>
+	<div th:replace="employee/genre-modal :: modalContent"></div>
+	<div class="container">
+		<h3>Modificarea cărții</h3>
+
+		<form id="bookForm">
+			<div class="row">
+				<div class="col-50">
+					<Label>ID-ul cărții </Label>
+				</div>
+				<div class="col-75">
+					<label id="bookIdLabel" th:text="${bookId}"></label>
+					<input type="hidden" id="bookId" name="bookId" th:value="${bookId}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="title">Titlu<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="title" name="title" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="author">Autor<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<select id="author" name="author" multiple required></select>
+				</div>
+				<button type="button" id="authors" class="styled-button" style="margin-left: 20px; background: darkcyan">Autori</button>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="genre">Genuri<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<select id="genre" name="genre" multiple required></select>
+				</div>
+				<button type="button" id="genres" class="styled-button" style="margin-left: 20px; background: darkcyan">Genuri</button>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="releaseYear">Anul editurii<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="releaseYear" name="releaseYear" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="publishName">Editura<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input list="publishes" id="publishName" name="publishName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Please select a publisher from the list.')">
+					<datalist id="publishes"></datalist>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="publishPlace">Locul editurii<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="publishPlace" name="publishPlace"  required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="ISBN">ISBN<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="ISBN" name="ISBN" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="BBK">Index BBK</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="BBK" name="BBK">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="UDK">Index UDK</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="UDK" name="UDK">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="price">Preț<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="price" name="price" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="number">Numărul de exemplare<span class="required">*</span></label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="number" name="number" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+				</div>
+				<div class="col-75">
+					<input type="submit" value="Salvează">
+					<input type="hidden" name="_method" value="PUT">
+				</div>
+			</div>
+		</form>	
+	</div>
+	<script src="/JS/employee-dashboard.js" type="text/javascript"></script>
+<script src="/JS/employee-change-info-book.js" type="text/javascript"></script>
+	<script src="/JS/author-modal.js" type="text/javascript"></script>
+	<script src="/JS/genre-modal.js" type="text/javascript"></script>
+</body>
+</html>

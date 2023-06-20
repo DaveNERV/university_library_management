@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<title>Home</title>
+</head>
+<body>
+
+	<ul th:replace="page-layout :: adminNavBar"></ul>
+
+	<div class="container">
+		<h2 th:text="${'Cu returnare' + ' ' + currentUser.firstName + ' ' + currentUser.lastName + ' ' + currentUser.surName + ' la pagina administratorului!'}"></h2>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/JS/admin-dashboard.js" type="text/javascript"></script>
+</body>
+</html>

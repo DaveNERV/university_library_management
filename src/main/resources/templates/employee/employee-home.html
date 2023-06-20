@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Books</title>
+<link rel="styleSheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar" id="employeeNavBar"></ul>
+	<div class="container">
+		<h3>Catalog</h3>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form th:action="@{/employee/}" method="GET">
+					<div class="row">
+						<div class="col-25">
+							<label for="bookId">Id-ul cărții</label>
+						</div>
+						<div class="col-75">
+							<input type="number" id="bookId" name="bookId" th:value="${bookId}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="bookName">Titlu</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="bookName" name="bookName" th:value="${bookName}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="authorId">Autor</label>
+						</div>
+						<div class="col-75">
+							<select id="authorId" name="authorId" th:attr="data-selected=${authorId}"></select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="genreId">Genul</label>
+						</div>
+						<div class="col-75">
+							<select id="genreId" name="genreId" th:attr="data-selected=${genreId}"></select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="publishName">Editura</label>
+						</div>
+						<div class="col-75">
+							<select id="publishName" name="publishName" th:attr="data-selected=${publishName}"></select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="publishYear">Anul publicării</label>
+						</div>
+						<div class="col-75">
+							<input type="number" id="publishYear" name="publishYear" th:value="${publishYear}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="ISBN">ISBN</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="ISBN" name="ISBN" th:value="${ISBN}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="BBK">BBK</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="BBK" name="BBK" th:value="${BBK}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="ISBN">UDK</label>
+						</div>
+						<div class="col-75">
+							<input type="text" id="UDK" name="UDK" th:value="${UDK}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-25">
+							<label for="onlyAvailable">Disponibil</label>
+						</div>
+						<div class="col-75">
+							<input type="checkbox" id="onlyAvailable" name="onlyAvailable" th:checked="${onlyAvailable}">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-75">
+							<input type="submit" value="Caută">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<button class="styled-button" id="myBtn">Criterii de căutare</button>
+
+			<form th:action="@{/employee/books/newbook}" method="GET">
+				<div>
+					<input style="margin-left: 20px; width: 200px;" type="submit" value="Formular de adăugarea cărții">
+				</div>
+			</form>
+		</div>
+		<script>
+			var modal = document.getElementById("myModal");
+			var btn = document.getElementById("myBtn");
+			var span = document.getElementsByClassName("close")[0];
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+		<br/>
+		<div style="overflow-x: auto; max-width: 100%;">
+			<table id="tablestyle" style="min-width: 2000px;">
+				<tr>
+					<th>ID</th>
+					<th>Titlu</th>
+					<th>Autor</th>
+					<th>Semnul autorului</th>
+					<th>Genuri</th>
+					<th>Anul publicării</th>
+					<th>Ediția</th>
+					<th>Locul publicării</th>
+					<th>Cantitatea</th>
+					<th>ISBN</th>
+					<th>UDK</th>
+					<th>BBK</th>
+					<th>Pret</th>
+					<th>Action</th>
+				</tr>
+				<tr th:each="book : ${booksEmployee}">
+					<td th:text="${book.bookId}"></td>
+					<td th:text="${book.bookName}"></td>
+					<td th:text="${book.authorsList}"></td>
+					<td th:text="${book.copyrightSign}"></td>
+					<td th:text="${book.genreList}"></td>
+					<td th:text="${book.publishYear}"></td>
+					<td th:text="${book.publish}"></td>
+					<td th:text="${book.publishPlace}"></td>
+					<td th:text="${book.nrBooks}"></td>
+					<td th:text="${book.ISBN}"></td>
+					<td th:text="${book.UDK}"></td>
+					<td th:text="${book.BBK}"></td>
+					<td th:text="${book.price}"></td>
+					<td style="width: 230px;">
+						<form th:action="@{/employee/books/changebookinfo}" method="GET">
+							<input type="submit" value="Modifică" class="table" style="width: 110px; margin-right: 6px"/>
+							<input type="hidden" th:value="${book.bookId}" name="bookId">
+						</form>
+						<form th:action="@{/employee/books/deletebook/__${book.bookId}__}" method="GET">
+							<input type="submit" value="Șterge" class="table" style="background-color: red; width: 110px;">
+							<input type="hidden" name="deleteBookId" th:value="${book.bookId}">
+						</form>
+					</td>
+
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/JS/employee-book-search.js" type="text/javascript"></script>
+<script src="/JS/employee-dashboard.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Forma de registrare</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/security-layout.css}">
+</head>
+<body>
+	
+	<div class="wrapperRegister">
+		<div class="containerRegister">
+
+			<form th:action="@{/register/save}" th:object="${newAccount}" method="POST">
+				<div th:if="${errorMessage}" class="alert alert-error">
+					<small th:text="${errorMessage}" class="error-message"></small>
+				</div>
+				<input type="hidden" id="type" name="type" required="required" value="user">
+				<p><b>Detalii de cont</b></p>
+				<div class="row">
+					<div class="col-25">
+						<label for="email">Email<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="email" id="email" name="email" required="required" th:field="${newAccount.email}">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-25">
+						<label for="password">Parola<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="password" id="password" name="password" required="required" th:field="${newAccount.password}">
+					</div>
+				</div>
+				
+				<p><b>Detalii de contact</b></p>
+				
+				<div class="row">
+					<div class="col-25">
+						<label for="firstName">Prenumele<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="firstName" name="firstName" required="required" th:field="${newAccount.firstName}">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-25">
+						<label for="lastName">Numele<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="lastName" name="lastName" required="required" th:field="${newAccount.lastName}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="surName">Patronimic<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="surName" name="surName" required="required" th:field="${newAccount.surName}">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="studyPeriod">Perioada de studii<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="studyPeriod" name="studyPeriod" required="required" th:field="${newAccount.studyPeriod}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="group">Grupa academică</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="group" name="group" th:field="${newAccount.group}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="street">Strada<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="street" name="street" required="required" th:field="${newAccount.street}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="city">Oraș<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="city" name="city" required="required" th:field="${newAccount.city}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="house">Casa<span class="required">*</span></label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="house" name="house" required="required" th:field="${newAccount.house}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="phone">Numărul de telefon</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="phone" name="phone" th:field="${newAccount.phone}">
+					</div>
+				</div>
+				
+				<div class="row">
+					<input class="registerButton" type="submit" value="Registrare">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Achită rezervația</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+
+	<div class="container">
+		<h3>Achită rezervația</h3>
+		<img src="/Images/payment-icons.png" alt="Payment icons...">
+		
+		<div class="row">
+			<div class="col-25">
+			 	Preț total:
+			</div>
+			<div class="col-75">
+				<text class="price"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-75">
+				<form id="myForm" th:action="@{/user/browsebooks/savereservation}" th:method="PUT">
+					<input type="submit" value="Achită rezervația" style="width: 200px">
+					<input type="hidden" value="PUT" name="_method">
+				</form>
+			</div>
+		</div>
+			
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/JS/user-pay.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div th:fragment="modalContent">
+  <!-- The Modal -->
+    <div id="authorsListModal" class="authorsListModal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close closeAuthor">x</span>
+        <h2>Autori</h2>
+        <div class="table-author-container">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Prenumele</th>
+            <th>Numele</th>
+            <th>Patronimic</th>
+            <th width="34%">Acțiuni</th>
+          </tr>
+        </table>
+        </div>
+        <button class="styled-button" id="addAuthorButton">Adăugarea autorului</button>
+      </div>
+    </div>
+    <div id="addAuthorModal" class="modal">
+      <div class="modal-content" style="height: 280px">
+        <span class="close closeAuthor">x</span>
+        <h2>Adaugă un autor nou</h2>
+        <form id="addAuthorForm">
+            <div class="row">
+                <div class="col-50">
+                    <label for="newFirstName">Prenumele autorului:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="newFirstName" name="newFirstName" required="required">
+                </div>
+            </div>
+          <div class="row">
+              <div class="col-50">
+                  <label for="newLastName">Numele autorului:</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="newLastName" name="newLastName" required="required">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-50">
+                  <label for="newSurName">Patronimicul autorului:</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="newSurName" name="newSurName">
+              </div>
+          </div>
+            <div class="row">
+                <div class="col-75">
+                    <input type="submit" id="addAuthorSubmit" value="Adaugă">
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+      <div id="editAuthorModal" class="modal">
+          <div class="modal-content" style="height: 280px">
+              <span class="close closeAuthor">x</span>
+              <h2>Modifică autorul</h2>
+              <form id="aditAuthorForm">
+                  <input type="hidden" id="editAuthorId" name="editAuthorId">
+                  <div class="row">
+                      <div class="col-50">
+                          <label for="editFirstName">Prenumele autorului:</label>
+                      </div>
+                      <div class="col-75">
+                          <input type="text" id="editFirstName" name="editFirstName" required="required">
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-50">
+                          <label for="editLastName">Numele autorului:</label>
+                      </div>
+                      <div class="col-75">
+                          <input type="text" id="editLastName" name="editLastName" required="required">
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-50">
+                          <label for="editSurName">Patronimicul autorului:</label>
+                      </div>
+                      <div class="col-75">
+                          <input type="text" id="editSurName" name="editSurName">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-75">
+                          <input type="submit" id="editAuthorSubmit" value="Salvează">
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div id="deleteAuthorModal" class="modal">
+          <div class="modal-content" style="height: 150px">
+              <span class="close closeAuthor">x</span>
+              <h2>Ștergeți autorul</h2>
+              <p id="deleteAuthorText">Doriți să ștergeți autorul: </p>
+              <button type="button" class="styled-button" id="confirmDeleteAuthorButton" style="background: red">Șterge</button>
+              <button type="button" class="styled-button" style="margin-left: 20px; background: darkcyan" id="cancelDeleteAuthorButton">Anulare</button>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

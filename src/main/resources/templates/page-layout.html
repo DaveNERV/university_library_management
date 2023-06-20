@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul th:fragment="userNavBar">
+  <li><a href="/user/">Principala</a></li>
+  <li><a href="/user/yourbooks">Cărțile mele</a></li>
+  <li><a href="/user/yourreservations">Rezervațiile mele</a></li>
+  <li><a href="/user/FAQ">FAQ</a></li>
+  <li style="float:right">
+    <div class="user-info dropdown">
+      <a href="javascript:void(0)" class="dropbtn">
+        <img src="/Images/user-icon.png" alt="User" class="user-icon">
+        <span></span>
+      </a>
+      <div class="dropdown-content">
+        <p><span class="bold-text">Numărul biletului: </span></p>
+        <p><span class="bold-text">Email: </span></p>
+        <p><span class="bold-text">Grupa: </span></p>
+        <p><span class="bold-text">Perioada de studii: </span></p>
+        <p><span class="bold-text">Adresa: </span></p>
+        <p><span class="bold-text">Numărul de telefon: </span></p>
+
+        <a href="/logout">
+          <img src="/Images/logout.png" alt="Logout" class="logout-icon">
+          <span class="logout-text">Ieșire</span>
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul th:fragment="employeeNavBar" id="employeeNavBar">
+  <li><a href="/employee">Principala</a></li>
+  <li><a href="/employee/users/showusers">Cititori</a></li>
+  <li><a href="/employee/returnedbooks/">Cărțile oferite</a></li>
+  <li><a href="/employee/reservations/">Rezervăzi</a></li>
+  <li style="float:right">
+    <div class="user-info dropdown">
+      <a href="javascript:void(0)" class="dropbtn">
+        <img src="/Images/user-icon.png" alt="User" class="user-icon">
+        <span></span>
+      </a>
+      <div class="dropdown-content">
+        <p><span class="bold-text">Email: </span></p>
+        <p><span class="bold-text">Funcția: </span></p>
+        <p><span class="bold-text">IDNP: </span></p>
+        <p><span class="bold-text">Adresa: </span></p>
+        <p><span class="bold-text">Numărul de telefon: </span></p>
+
+        <a href="/logout">
+          <img src="/Images/logout.png" alt="Logout" class="logout-icon">
+          <span class="logout-text">Ieșire</span>
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul th:fragment="adminNavBar">
+  <li><a href="/admin/">Principala</a></li>
+  <li><a href="/admin/manage-reader-accounts">Gestionarea cititorilor</a></li>
+  <li><a href="/admin/manage-employee-accounts">Gestionarea angajatilor</a></li>
+  <li style="float:right">
+    <div class="user-info dropdown">
+      <a href="javascript:void(0)" class="dropbtn">
+        <img src="/Images/user-icon.png" alt="User" class="user-icon">
+        <span></span>
+      </a>
+      <div class="dropdown-content">
+        <p><span class="bold-text">Email: </span></p>
+        <p><span class="bold-text">Funcția: </span></p>
+        <p><span class="bold-text">IDNP: </span></p>
+        <p><span class="bold-text">Adresa: </span></p>
+        <p><span class="bold-text">Numărul de telefon: </span></p>
+
+        <a href="/logout">
+          <img src="/Images/logout.png" alt="Logout" class="logout-icon">
+          <span class="logout-text">Ieșire</span>
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>
+
+</body>
+</html>
