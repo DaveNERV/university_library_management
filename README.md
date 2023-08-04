@@ -1,4 +1,4 @@
-# Univertiry Library Management
+# University Library Management
 University Library Management System developed in Spring Boot. There is also an advanced search for books, books at hand, readers and orders.
 
 #### What does it offer?
