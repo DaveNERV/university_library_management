@@ -7,8 +7,6 @@ It allows user to manage Members, Books, Genres, Authors, Reservations and Issue
 ### Setup project
 #### Setup database
 Project requires PostgresSQL database. The version of the database is prefered to be 15
-#### Setup code
-Create a .war file of project and deploy it on a webserver like Apache tomcat.
 
 ### Login
 To log in system you must register and then log in.
